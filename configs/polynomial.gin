@@ -1,0 +1,28 @@
+main.num_workers = 6
+main.batch_size = 64
+main.helper_type = @PolynomialSubtrainer
+main.model_type = @MLP
+main.dataset_type = [@PolynomialDataset]
+
+Trainer.base_exp_dir = './results/'
+Trainer.exp_name = 'Polynomial2'
+Trainer.eval_step = 500
+Trainer.log_step = 25
+Trainer.ckpt_step = 500
+Trainer.max_steps = 2500
+Trainer.effective_batch_size = 64
+Trainer.lr = 2e-2
+Trainer.resume = None
+
+Trainer.fp16 = False
+Trainer.bf16 = False
+
+
+MLP.in_channels = 2
+MLP.out_channels = 1
+MLP.hidden_channels = 64
+MLP.num_layers = 3
+
+PolynomialDataset.polynomial_coeffs = [1, -1, -1, -1, 1, 1]
+
+get_scheduler.warmup_iters = 100
